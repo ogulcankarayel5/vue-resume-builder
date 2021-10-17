@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+   }
+
+    html {
+     @apply 
+     font-serif
+     box-border
+     antialiased;
+    
+    }
+}
+
+@layer utilities {
+  .form-text {
+    @apply
+    text-3xl
+    tracking-tighter
+    font-bold
+  },
+  .form-input {
+    @apply
+    border-formColor border-solid border-2 rounded-md h-auto  focus:outline-none font-semibold tracking-tight text-lg
+  }
+}
