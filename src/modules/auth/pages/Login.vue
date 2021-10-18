@@ -4,20 +4,23 @@
       <div />
       <form class="pl-0 md:p-14" @submit.prevent="onClick">
         <div class="mb-9">
+
           <span class="form-text text-formColor">Welcome back to </span>
           <span class="form-text text-yellow-dark">ResumeBuilder</span>
         </div>
         <p class="text-6xl tracking-tight text-formColor">Login</p>
         <div class="w-80">
           <v-input
+            type="email"
             className="form-input"
             v-model="email"
             placeholder="Email"
+            enterkeyhint="next"
             @blur="$v.email.$touch()"
           />
           <template v-if="$v.email.$error">
-            <p v-if="!$v.email.required">Email is required</p>
-            <p v-if="!$v.email.email">Email must be proper</p>
+            <v-error v-if="!$v.email.required" error="Email is required" />
+            <v-error v-if="!$v.email.email" error="Email must be proper" />
           </template>
           <v-input
             type="password"
@@ -25,13 +28,18 @@
             v-model="password"
             placeholder="Password"
             show-hide-icon
+            enterkeyhint="done"
             @blur="$v.password.$touch()"
           />
           <template v-if="$v.password.$error">
-            <p v-if="!$v.password.required">Password is required</p>
-            <p v-if="!$v.password.minLength">
-              Password must be at least 5 characters
-            </p>
+            <v-error
+              v-if="!$v.password.required"
+              error="Password is required"
+            />
+            <v-error
+              v-if="!$v.password.minLength"
+              error="Password must be at least 5 characters"
+            />
           </template>
           <v-button
             variant="secondary"
@@ -67,7 +75,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { VInput, VButton } from "@/common";
+import { VInput, VButton, VError } from "@/common";
 import VIcon from "@/common/components/VIcon.vue";
 import { required, email, minLength } from "vuelidate/lib/validators";
 
@@ -77,6 +85,7 @@ export default Vue.extend({
     VInput,
     VButton,
     VIcon,
+    VError,
   },
   data() {
     return {
