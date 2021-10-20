@@ -1,11 +1,15 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import {
+  getBrowserLocale,
+  supportedLocalesInclude,
+} from "@/plugins/i18n/utils";
 
 Vue.use(VueI18n);
 
-function loadLocaleMessages() {
+const loadLocaleMessages = () => {
   const locales = require.context(
-    "../locales",
+    "./locales",
     true,
     /[A-Za-z0-9-_,\s]+\.json$/i
   );
@@ -18,10 +22,19 @@ function loadLocaleMessages() {
     }
   });
   return messages;
-}
+};
+
+const getStartingLocale = () => {
+  const browserLocale = getBrowserLocale({ countryCodeOnly: true });
+  if (supportedLocalesInclude(browserLocale)) {
+    return browserLocale;
+  } else {
+    return "en";
+  }
+};
 
 export default new VueI18n({
-  locale: "en",
+  locale: getStartingLocale(),
   fallbackLocale: "en",
   messages: loadLocaleMessages(),
 });

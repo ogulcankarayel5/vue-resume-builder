@@ -4,9 +4,9 @@
       <div />
       <form class="pl-0 md:p-14" @submit.prevent="onClick">
         <div class="mb-9">
-
-          <span class="form-text text-formColor">Welcome back to </span>
-          <span class="form-text text-yellow-dark">ResumeBuilder</span>
+          <i18n path="login.title" tag="span" class="form-text text-formColor">
+            <span class="text-yellow-dark">ResumeBuilder</span>
+          </i18n>
         </div>
         <p class="text-6xl tracking-tight text-formColor">Login</p>
         <div class="w-80">
@@ -98,7 +98,6 @@ export default Vue.extend({
       this.$v.$touch();
 
       if (this.$v.$invalid) {
-        console.log(this.$v);
         return;
       }
     },
