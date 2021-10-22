@@ -1,5 +1,20 @@
 {
     "login": {
-        "title":"{0}'a Hoş Geldiniz"
+        "title":"{0}'a Hoş Geldiniz",
+        "subTitle":"Giriş Yap",
+        "buttonText":"Giriş Yap",
+        "footerText":"Henüz bir hesabın yok mu?",
+        "footerText2":"Hemen Oluştur"
+    },
+    "error":{
+        "email":{
+            "required":"Email alanı zorunludur",
+            "proper":"Email uygun formatta olmalıdır"
+        },
+        "password": {
+            "required":"Şifre alanı zorunludur",
+            "minLength":"Şifre minimum {length} uzunluğunda olmalıdır"
+        }
+
     }
 }
