@@ -1,5 +1,19 @@
 {
     "login": {
-        "title":"Welcome to {0}"
+        "title":"Welcome to {0}",
+        "subTitle":"Login",
+        "buttonText":"Login",
+        "footerText":"Don't have an account?",
+        "footerText2": "Get Started"
+    },
+    "error":{
+        "email":{
+            "required":"Email is required",
+            "proper":"Email must be proper"
+        },
+        "password": {
+            "required":"Password is required",
+            "minLength":"Password must be at least {length} characters"
+        }
     }
 }

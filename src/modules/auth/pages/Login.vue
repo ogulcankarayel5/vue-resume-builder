@@ -8,7 +8,9 @@
             <span class="text-yellow-dark">ResumeBuilder</span>
           </i18n>
         </div>
-        <p class="text-6xl tracking-tight text-formColor">Login</p>
+        <p class="text-6xl tracking-tight text-formColor">
+          {{ $t("login.subTitle") }}
+        </p>
         <div class="w-80">
           <v-input
             type="email"
@@ -19,8 +21,11 @@
             @blur="$v.email.$touch()"
           />
           <template v-if="$v.email.$error">
-            <v-error v-if="!$v.email.required" error="Email is required" />
-            <v-error v-if="!$v.email.email" error="Email must be proper" />
+            <v-error
+              v-if="!$v.email.required"
+              :error="$t('error.email.required')"
+            />
+            <v-error v-if="!$v.email.email" :error="$t('error.email.proper')" />
           </template>
           <v-input
             type="password"
@@ -34,11 +39,15 @@
           <template v-if="$v.password.$error">
             <v-error
               v-if="!$v.password.required"
-              error="Password is required"
+              :error="$t('error.password.required')"
             />
             <v-error
               v-if="!$v.password.minLength"
-              error="Password must be at least 5 characters"
+              :error="
+                $t('error.password.minLength', {
+                  length: this.$v.password.$params.minLength.min,
+                })
+              "
             />
           </template>
           <v-button
@@ -52,16 +61,15 @@
               text-xl
               tracking-tighter
             "
-            :disabled="$v.$invalid"
-            >Login</v-button
+            >{{ $t("login.buttonText") }}</v-button
           >
           <div class="mt-7">
-            <span class="text-formColor text-xl tracking-tighter"
-              >Don't have an account?</span
-            >
-            <span class="ml-1 text-yellow-dark text-xl tracking-tighter"
-              >Get Started</span
-            >
+            <span class="text-formColor text-xl tracking-tighter">{{
+              $t("login.footerText")
+            }}</span>
+            <span class="ml-1 text-yellow-dark text-xl tracking-tighter">{{
+              $t("login.footerText2")
+            }}</span>
           </div>
         </div>
       </form>
@@ -96,7 +104,6 @@ export default Vue.extend({
   methods: {
     onClick() {
       this.$v.$touch();
-
       if (this.$v.$invalid) {
         return;
       }
