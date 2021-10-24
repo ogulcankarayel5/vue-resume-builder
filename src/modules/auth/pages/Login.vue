@@ -86,6 +86,7 @@ import Vue from "vue";
 import { VInput, VButton, VError } from "@/common";
 import VIcon from "@/common/components/VIcon.vue";
 import { required, email, minLength } from "vuelidate/lib/validators";
+import firebase from "@/plugins";
 
 export default Vue.extend({
   name: "Login",
@@ -102,10 +103,19 @@ export default Vue.extend({
     };
   },
   methods: {
-    onClick() {
+    async onClick() {
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;
+      }
+
+      try {
+        const res = await firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password);
+          console.log("res", res)
+      } catch (err) {
+        console.log(err);
       }
     },
   },
