@@ -13,6 +13,6 @@ export default Vue.extend({
   name: "Login",
   components: {
     LanguageSwitcher,
-  },
+  }
 });
 </script>
