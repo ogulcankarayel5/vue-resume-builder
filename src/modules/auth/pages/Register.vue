@@ -4,12 +4,16 @@
       <div />
       <form class="pl-0 md:p-14" @submit.prevent="onClick">
         <div class="mb-9">
-          <i18n path="login.title" tag="span" class="form-text text-formColor">
+          <i18n
+            path="register.title"
+            tag="span"
+            class="form-text text-formColor"
+          >
             <span class="text-yellow-dark">ResumeBuilder</span>
           </i18n>
         </div>
         <p class="text-6xl tracking-tight text-formColor">
-          {{ $t("login.subTitle") }}
+          {{ $t("register.subTitle") }}
         </p>
         <div class="w-80">
           <v-input
@@ -61,16 +65,16 @@
               text-xl
               tracking-tighter
             "
-            >{{ $t("login.buttonText") }}</v-button
+            >{{ $t("register.buttonText") }}</v-button
           >
           <div class="mt-7">
             <span class="text-formColor text-xl tracking-tighter">{{
-              $t("login.footerText")
+              $t("register.footerText")
             }}</span>
             <router-link
-              to="/register"
+              to="/login"
               class="ml-1 text-yellow-dark text-xl tracking-tighter"
-              >{{ $t("login.footerText2") }}</router-link
+              >{{ $t("register.footerText2") }}</router-link
             >
           </div>
         </div>
@@ -92,7 +96,7 @@ import { mapActions } from "vuex";
 import { ActionTypes } from "../store/types";
 
 export default Vue.extend({
-  name: "Login",
+  name: "Register",
   components: {
     VInput,
     VButton,
@@ -106,17 +110,14 @@ export default Vue.extend({
     };
   },
   methods: {
-    ...mapActions("auth", [ActionTypes.LOGIN, ActionTypes.LOGOUT]),
+    ...mapActions("auth", [ActionTypes.REGISTER]),
     async onClick() {
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;
       }
 
-      this.login({ email: this.email, password: this.password });
-    },
-    logoutClick() {
-      this.logout();
+      this.register({ email: this.email, password: this.password });
     },
   },
   validations: {

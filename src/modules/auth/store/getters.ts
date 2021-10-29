@@ -3,11 +3,11 @@ import { AuthState } from "@/modules/auth/store/types";
 import { RootState } from "@/store";
 
 export type Getters = {
-  user(state: AuthState): number;
+  isLoggedIn(state: AuthState): boolean;
 };
 
 export const getters: GetterTree<AuthState, RootState> & Getters = {
-  user: (state) => {
-    return state.user;
+  isLoggedIn: (state) => {
+    return !!state.user;
   },
 };
