@@ -67,11 +67,9 @@
             <span class="text-formColor text-xl tracking-tighter">{{
               $t("login.footerText")
             }}</span>
-            <router-link
-              to="/register"
-              class="ml-1 text-yellow-dark text-xl tracking-tighter"
-              >{{ $t("login.footerText2") }}</router-link
-            >
+            <span class="ml-1 text-yellow-dark text-xl tracking-tighter">{{
+              $t("login.footerText2")
+            }}</span>
           </div>
         </div>
       </form>
@@ -83,53 +81,13 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
-import { VInput, VButton, VError } from "@/common";
-import VIcon from "@/common/components/VIcon.vue";
-import { required, email, minLength } from "vuelidate/lib/validators";
-import { mapActions } from "vuex";
-import { ActionTypes } from "../store/types";
-
 export default Vue.extend({
-  name: "Login",
-  components: {
-    VInput,
-    VButton,
-    VIcon,
-    VError,
-  },
-  data() {
-    return {
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    ...mapActions("auth", [ActionTypes.LOGIN, ActionTypes.LOGOUT]),
-    async onClick() {
-      this.$v.$touch();
-      if (this.$v.$invalid) {
-        return;
-      }
 
-      this.login({ email: this.email, password: this.password });
-    },
-    logoutClick() {
-      this.logout();
-    },
-  },
-  validations: {
-    email: {
-      required,
-      email,
-    },
-    password: {
-      required,
-      minLength: minLength(5),
-    },
-  },
-});
+})
 </script>
 
-<style></style>
+<style>
+
+</style>

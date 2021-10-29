@@ -6,6 +6,13 @@
         "footerText":"Henüz bir hesabın yok mu?",
         "footerText2":"Hemen Oluştur"
     },
+    "register": {
+        "title":"{0}'a Hoş Geldiniz",
+        "subTitle":"Üye Ol",
+        "buttonText":"Üye Ol",
+        "footerText":"Zaten bir hesabın var mı?",
+        "footerText2":"Giriş Yap"
+    },
     "error":{
         "email":{
             "required":"Email alanı zorunludur",

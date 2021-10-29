@@ -4,7 +4,10 @@ import { AuthRoutes } from "@/modules/auth/routes";
 
 Vue.use(VueRouter);
 
-const routes: Array<RouteConfig> = [...AuthRoutes];
+const routes: Array<RouteConfig> = [
+  ...AuthRoutes,
+  { path: "*", redirect: { name: "login" } },
+];
 
 const router = new VueRouter({
   mode: "history",

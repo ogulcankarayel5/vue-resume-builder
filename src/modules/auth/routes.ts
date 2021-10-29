@@ -6,4 +6,9 @@ export const AuthRoutes: Array<RouteConfig> = [
     name: "login",
     component: () => import("@/modules/auth/pages/Login.vue"),
   },
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("@/modules/auth/pages/Register.vue"),
+  },
 ];

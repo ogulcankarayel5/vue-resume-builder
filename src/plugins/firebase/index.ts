@@ -1,1 +1,1 @@
-export { default } from "@/plugins/firebase/firebase";
+export { default, auth } from "@/plugins/firebase/firebase";

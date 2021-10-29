@@ -6,6 +6,13 @@
         "footerText":"Don't have an account?",
         "footerText2": "Get Started"
     },
+    "register":{
+        "title":"Welcome to {0}",
+        "subTitle":"Register",
+        "buttonText":"Register",
+        "footerText":"Already have an account?",
+        "footerText2":"Sign In"
+    },
     "error":{
         "email":{
             "required":"Email is required",
