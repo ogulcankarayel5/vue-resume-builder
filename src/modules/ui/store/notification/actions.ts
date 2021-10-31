@@ -3,7 +3,7 @@ import {
   ActionTypes,
   MutationTypes,
 } from "@/modules/ui/store/notification/types";
-import { NotificationState, Notification } from "./types";
+import { NotificationState, INotification } from "./types";
 import { RootState } from "@/store";
 
 // type AugmentedActionContext = {
@@ -16,19 +16,19 @@ import { RootState } from "@/store";
 export interface Actions {
   [ActionTypes.PUSH_NOTIFICATION](
     { commit }: ActionContext<NotificationState, RootState>,
-    payload: Notification
+    payload: INotification
   ): void;
   [ActionTypes.REMOVE_NOTIFICATION](
     { commit }: ActionContext<NotificationState, RootState>,
-    payload: Notification
+    payload: INotification
   ): void;
 }
 
 export const actions: ActionTree<NotificationState, RootState> & Actions = {
-  [ActionTypes.PUSH_NOTIFICATION]({ commit }, payload) {
+  async [ActionTypes.PUSH_NOTIFICATION]({ commit }, payload) {
     commit(MutationTypes.PUSH_NOTIFICATION, payload);
   },
   [ActionTypes.REMOVE_NOTIFICATION]({ commit }, payload) {
-    commit(MutationTypes.REMOVE_NOTIFICATION), payload;
+    commit(MutationTypes.REMOVE_NOTIFICATION, payload);
   },
 };

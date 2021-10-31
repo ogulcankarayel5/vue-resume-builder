@@ -1,13 +1,13 @@
 export type NotificationTypes = "error" | "success";
 
-export interface Notification {
+export interface INotification {
   id: any;
   type: NotificationTypes;
   message: string;
 }
 
 export interface NotificationState {
-  notifications: Array<Notification>;
+  notifications: Array<INotification>;
 }
 
 export enum ActionTypes {
