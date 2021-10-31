@@ -1,6 +1,7 @@
 <template>
   <div class="h-screen">
     <language-switcher />
+    <notification-list/>
     <transition mode="out-in" name="fade">
       <router-view />
     </transition>
@@ -14,12 +15,14 @@ import firebase from "firebase";
 import { auth } from "@/plugins";
 import { mapMutations } from "vuex";
 import { MutationTypes } from "./modules/auth/store/types";
+import NotificationList from "./modules/ui/components/NotificationList.vue";
 
 let unsubscribe: firebase.Unsubscribe;
 export default Vue.extend({
   name: "Login",
   components: {
     LanguageSwitcher,
+    NotificationList,
   },
   created() {
     

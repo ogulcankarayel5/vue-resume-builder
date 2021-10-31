@@ -1,5 +1,5 @@
 <template>
-  <component :is="iconComponent" role="img" />
+  <component :is="iconComponent" :color="color" role="img" />
 </template>
 
 <script lang="ts">
@@ -9,6 +9,8 @@ const icons: any = {
   reveal: require("@/common/icons/Reveal.vue").default,
   revealHide: require("@/common/icons/RevealHide.vue").default,
   resume: require("@/common/icons/Resume.vue").default,
+  tick: require("@/common/icons/Tick.vue").default,
+  close: require("@/common/icons/Close.vue").default,
 };
 
 export default Vue.extend({
@@ -17,6 +19,10 @@ export default Vue.extend({
     name: {
       type: String,
       required: true,
+    },
+    color: {
+      type: String,
+      required: false,
     },
   },
   computed: {

@@ -1,7 +1,7 @@
 import { MutationTree } from "vuex";
 import {
   MutationTypes,
-  Notification,
+  INotification,
 } from "@/modules/ui/store/notification/types";
 
 import { NotificationState } from "./types";
@@ -11,13 +11,14 @@ export type Mutations<S = NotificationState> = {
 };
 
 export const mutations: MutationTree<NotificationState> & Mutations = {
-  [MutationTypes.PUSH_NOTIFICATION](state, payload: Notification) {
+  [MutationTypes.PUSH_NOTIFICATION](state, payload: INotification) {
     state.notifications = [
       ...state.notifications,
       { ...payload, id: Math.random().toString(20) },
     ];
   },
   [MutationTypes.REMOVE_NOTIFICATION](state, payload: any) {
+    console.log(payload)
     state.notifications = state.notifications.filter((notification) => {
       return notification.id !== payload;
     });
