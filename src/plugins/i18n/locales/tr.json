@@ -1,10 +1,10 @@
 {
     "login": {
         "title":"{0}'a Hoş Geldiniz",
-        "subTitle":"Giriş Yap",
+        "subTitle":"Merhaba! Tekrar Hoş Geldin",
         "buttonText":"Giriş Yap",
         "footerText":"Henüz bir hesabın yok mu?",
-        "footerText2":"Hemen Oluştur"
+        "footerText2":"Üye Ol"
     },
     "register": {
         "title":"{0}'a Hoş Geldiniz",

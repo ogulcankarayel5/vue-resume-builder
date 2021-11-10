@@ -12,10 +12,15 @@
 
     html {
      @apply 
-     font-serif
+     font-sans
      box-border
      antialiased;
     
+    }
+
+    svg {
+      @apply
+      inline-block
     }
 }
 
@@ -25,9 +30,6 @@
     text-3xl
     tracking-tighter
     font-bold
-  },
-  .form-input {
-    @apply
-    border-formColor border-solid border-2 rounded-md h-auto  focus:outline-none font-semibold tracking-tight text-lg
   }
+  
 }

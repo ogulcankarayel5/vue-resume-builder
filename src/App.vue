@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen">
     <language-switcher />
-    <notification-list/>
+    <notification-list />
     <transition mode="out-in" name="fade">
       <router-view />
     </transition>
@@ -13,8 +13,8 @@ import Vue from "vue";
 import { LanguageSwitcher } from "@/common/components";
 import firebase from "firebase";
 import { auth } from "@/plugins";
-import { mapMutations } from "vuex";
-import { MutationTypes } from "./modules/auth/store/types";
+import { mapActions, mapMutations } from "vuex";
+import { ActionTypes, MutationTypes } from "./modules/auth/store/types";
 import NotificationList from "./modules/ui/components/NotificationList.vue";
 
 let unsubscribe: firebase.Unsubscribe;
@@ -25,20 +25,21 @@ export default Vue.extend({
     NotificationList,
   },
   created() {
-    
+    this.AUTH_START();
     unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        this.SET_USER(user);
+        console.log("user: ",user)
+        this.init(user);
       } else {
-        this.SET_USER_LOGOUT();
+        // this.logout();
       }
       console.log("user: ", user);
     });
   },
   methods: {
+    ...mapActions("auth", [ActionTypes.LOGOUT, ActionTypes.INIT]),
     ...mapMutations("auth", [
-      MutationTypes.SET_USER,
-      MutationTypes.SET_USER_LOGOUT,
+      MutationTypes.AUTH_START,
     ]),
   },
   beforeDestroy() {

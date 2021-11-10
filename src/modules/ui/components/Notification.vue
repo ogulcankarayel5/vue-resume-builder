@@ -31,10 +31,10 @@
           "
           :class="[color]"
         >
-          QWEWQEWQEEQWEQWWEQEWQWQEEWQEQWWEQEWQEWQQEW
+          {{ notification.message }}
         </p>
       </div>
-      <v-icon name="close" :color="color" />
+      <icon-button @onClick="onClose" name="close" :color="color" />
     </div>
   </transition>
 </template>
@@ -47,13 +47,14 @@ import {
   INotification,
 } from "@/modules/ui/store/notification/types";
 import VIcon from "@/common/components/VIcon.vue";
+import IconButton from "@/common/components/IconButton.vue";
 
 // const COLORS = {
 //   success: 'text-toast-successText',
 //   error: ''
 // }
 export default Vue.extend({
-  components: { VIcon },
+  components: { VIcon, IconButton },
   name: "Notification",
   props: {
     notification: {
@@ -98,11 +99,14 @@ export default Vue.extend({
   },
   methods: {
     ...mapActions("ui/notification", [ActionTypes.REMOVE_NOTIFICATION]),
+    onClose() {
+      this.removeNotication(this.notification.id);
+    },
   },
   created() {
     this.timeout = setTimeout(() => {
       this.removeNotication(this.notification.id);
-    }, 4000000);
+    }, 3000);
   },
   beforeDestroy() {
     clearTimeout(this.timeout);

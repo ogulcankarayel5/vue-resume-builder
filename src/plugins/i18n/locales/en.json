@@ -1,10 +1,10 @@
 {
     "login": {
         "title":"Welcome to {0}",
-        "subTitle":"Login",
+        "subTitle":"Hello! Welcome Back",
         "buttonText":"Login",
         "footerText":"Don't have an account?",
-        "footerText2": "Get Started"
+        "footerText2": "Sign Up"
     },
     "register":{
         "title":"Welcome to {0}",

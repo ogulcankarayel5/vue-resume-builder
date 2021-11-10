@@ -18,11 +18,19 @@ const loginWithEmailAndPassword = async (
   return response;
 };
 
+const loginWithGoogle= async (
+): Promise<any> => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  const response = await auth.signInWithPopup(provider);
+  return response;
+};
+
 const logout = async (): Promise<any> => {
   await auth.signOut();
 };
 export const AuthService = {
   registerWithEmailAndPassword,
   loginWithEmailAndPassword,
+  loginWithGoogle,
   logout,
 };

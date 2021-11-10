@@ -1,7 +1,6 @@
-export type State = {
-  user: any | null;
-};
+import { AuthState } from "./types";
 
-export const state: State = {
+export const state: AuthState = {
   user: null,
+  loading: false,
 };
