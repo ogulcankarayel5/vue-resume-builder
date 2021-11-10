@@ -1,21 +1,34 @@
 <template>
-  <div class="relative flex items-center mt-3">
-    <input
-      class="flex-1 p-2"
-      :class="className"
-      v-bind="$attrs"
-      v-on="$listeners"
-      :value="value"
-      @input="update"
-      :type="showPassword ? 'text' : type"
-    />
+  <div class="w-80 flex flex-col" :class="containerClassName">
+    <label v-if="label">{{ label }}</label>
     <div
-      v-if="showHideIcon"
-      class="absolute top-2/4 transform -translate-y-2/4 right-2 cursor-pointer"
-      @click="togglePassword"
+      class="relative flex items-center"
+      :class="{ 'mt-3': label !== undefined }"
     >
-      <v-icon v-if="showPassword" name="reveal" />
-      <v-icon v-else name="revealHide" />
+      <input
+        class="flex-1 p-3 shadow-2xl rounded-lg focus:outline-none"
+        :class="className"
+        v-bind="$attrs"
+        v-on="$listeners"
+        :value="value"
+        @input="update"
+        :type="showPassword ? 'text' : type"
+      />
+      <div
+        v-if="showHideIcon"
+        class="
+          absolute
+          top-2/4
+          transform
+          -translate-y-2/4
+          right-2
+          cursor-pointer
+        "
+        @click="togglePassword"
+      >
+        <v-icon v-if="showPassword" name="reveal" />
+        <v-icon v-else name="revealHide" />
+      </div>
     </div>
   </div>
 </template>
@@ -40,10 +53,19 @@ export default Vue.extend({
     },
     className: {
       type: [String, Array, Object],
+      required: false,
+    },
+    containerClassName: {
+      type: [String, Array, Object],
+      required: false,
     },
     showHideIcon: {
       type: Boolean,
       default: false,
+    },
+    label: {
+      type: String,
+      required: false,
     },
   },
 
@@ -58,6 +80,9 @@ export default Vue.extend({
     togglePassword(): void {
       this.showPassword = !this.showPassword;
     },
+  },
+  created() {
+    console.log(this.label);
   },
 });
 </script>

@@ -1,12 +1,14 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import { AuthRoutes } from "@/modules/auth/routes";
+import { HomeRoutes } from "@/modules/home/routes";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   ...AuthRoutes,
-  { path: "*", redirect: { name: "login" } },
+  ...HomeRoutes,
+  { path: "*", redirect: { name: "home" } },
 ];
 
 const router = new VueRouter({

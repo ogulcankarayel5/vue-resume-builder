@@ -32,8 +32,9 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
-, "src/plugins/i18n/supported-locales.ts"  ],
+    "tests/**/*.tsx",
+    "src/plugins/i18n/supported-locales.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -2,8 +2,12 @@ module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    boxShadow: {
+      '2xl':'0px 2px 7px -4px rgba(0,0,0,0.75)'
+    },
     extend: {
       colors: {
+        primary:"#3166FA",
         formColor: "#032D23",
         yellow: {
           dark: "#AAA713",
