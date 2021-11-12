@@ -11,6 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "allowJs": true,
     "types": [
       "webpack-env",
       "jest"
@@ -34,7 +35,7 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "src/plugins/i18n/supported-locales.ts"
-  ],
+, "src/common/mixins/window-size.js", "src/common/mixins/index.ts"  ],
   "exclude": [
     "node_modules"
   ]
