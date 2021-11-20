@@ -1,7 +1,6 @@
 import { MutationTree } from "vuex";
 import { MutationTypes, AuthState } from "@/modules/auth/store/types";
 
-import firebase from "firebase";
 
 export type Mutations<S = AuthState> = {
   [MutationTypes.AUTH_START]: (state: S) => void;

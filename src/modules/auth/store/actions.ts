@@ -36,7 +36,7 @@ export const actions: ActionTree<AuthState, RootState> = {
     //this line will be move to route guards
     //router.replace("home");
   },
-  async [ActionTypes.LOGIN_WITH_GOOGLE]({ commit }, payload) {
+  async [ActionTypes.LOGIN_WITH_GOOGLE]({ commit }) {
     commit(MutationTypes.AUTH_START);
     try {
       await AuthService.loginWithGoogle();

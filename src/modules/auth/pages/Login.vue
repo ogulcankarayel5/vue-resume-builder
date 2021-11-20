@@ -8,6 +8,7 @@
         type="email"
         placeholder="Email"
         enterkeyhint="next"
+        id="email"
         @blur="$v.email.$touch()"
       />
       <template v-if="$v.email.$error">
