@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {  windowSizeMixin } from "@/common";
+import { windowSizeMixin } from "@/common";
 
 export default Vue.extend({
   name: "FormLayout",
