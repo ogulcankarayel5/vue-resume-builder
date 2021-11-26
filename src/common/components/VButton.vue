@@ -1,11 +1,12 @@
 <template>
   <button
+    data-test-id="button"
     class="py-4 flex justify-center items-center"
     :class="[getVariant, disabled, getSize, getElevation]"
     @click="onClick"
   >
-    <pulse-loader v-if="loading" color="#ffffff" />
-    <slot v-else />
+    <pulse-loader data-test-id="loading" v-if="loading" color="#ffffff" />
+    <slot v-else data-test-id="slot"/>
   </button>
 </template>
 

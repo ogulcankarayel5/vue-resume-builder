@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VButton snapshot 1`] = `
+<button
+  class="py-4 flex justify-center items-center w-full"
+  data-test-id="button"
+/>
+`;
