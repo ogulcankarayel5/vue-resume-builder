@@ -6,5 +6,4 @@ module.exports = {
   testMatch: [
     "**/src/**/*.test.[jt]s?(x)",
   ],
-  setupFiles: ["<rootDir>/src/setupTest.ts"],
 };
