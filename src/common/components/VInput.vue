@@ -13,6 +13,7 @@
         :value="value"
         @input="update"
         :type="showPassword ? 'text' : type"
+        data-test-id="input"
       />
       <div
         v-if="showHideIcon"
@@ -25,9 +26,10 @@
           cursor-pointer
         "
         @click="togglePassword"
+        data-test-id="password"
       >
-        <v-icon v-if="showPassword" name="reveal" />
-        <v-icon v-else name="revealHide" />
+        <v-icon data-test-id="reveal" v-if="showPassword" name="reveal" />
+        <v-icon data-test-id="revealHide" v-else name="revealHide" />
       </div>
     </div>
   </div>
@@ -45,7 +47,7 @@ export default Vue.extend({
   },
   props: {
     value: {
-      required: true,
+      required: false,
     },
     type: {
       type: String,
@@ -80,9 +82,6 @@ export default Vue.extend({
     togglePassword(): void {
       this.showPassword = !this.showPassword;
     },
-  },
-  created() {
-    console.log(this.label);
   },
 });
 </script>
