@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VInput snapshot 1`] = `
+<div
+  class="w-80 flex flex-col"
+>
+  <!---->
+   
+  <div
+    class="relative flex items-center"
+  >
+    <input
+      class="flex-1 p-3 shadow-2xl rounded-lg focus:outline-none"
+      data-test-id="input"
+      type="text"
+    />
+     
+    <!---->
+  </div>
+</div>
+`;
