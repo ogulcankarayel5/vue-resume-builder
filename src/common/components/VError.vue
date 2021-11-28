@@ -10,7 +10,7 @@ export default Vue.extend({
   props: {
     error: {
       type: String,
-      required: false,
+      required: true,
     },
   },
 });
