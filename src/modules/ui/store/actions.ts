@@ -1,9 +1,6 @@
 import { ActionContext, ActionTree } from "vuex";
-import {
-  ActionTypes,
-  MutationTypes,
-} from "@/modules/ui/store/notification/types";
-import { NotificationState, INotification } from "./types";
+import { ActionTypes, MutationTypes } from "@/modules/ui/store/types";
+import { UIState, INotification } from "./types";
 import { RootState } from "@/store";
 
 // type AugmentedActionContext = {
@@ -15,20 +12,25 @@ import { RootState } from "@/store";
 
 export interface Actions {
   [ActionTypes.PUSH_NOTIFICATION](
-    { commit }: ActionContext<NotificationState, RootState>,
+    { commit }: ActionContext<UIState, RootState>,
     payload: INotification
   ): void;
   [ActionTypes.REMOVE_NOTIFICATION](
-    { commit }: ActionContext<NotificationState, RootState>,
+    { commit }: ActionContext<UIState, RootState>,
     payload: INotification
   ): void;
+
+  [ActionTypes.TOGGLE_NAV]({ commit }: ActionContext<UIState, RootState>): void;
 }
 
-export const actions: ActionTree<NotificationState, RootState> & Actions = {
+export const actions: ActionTree<UIState, RootState> & Actions = {
   async [ActionTypes.PUSH_NOTIFICATION]({ commit }, payload) {
     commit(MutationTypes.PUSH_NOTIFICATION, payload);
   },
   [ActionTypes.REMOVE_NOTIFICATION]({ commit }, payload) {
     commit(MutationTypes.REMOVE_NOTIFICATION, payload);
+  },
+  [ActionTypes.TOGGLE_NAV]({ commit }) {
+    commit(MutationTypes.TOGGLE_NAV);
   },
 };

@@ -10,7 +10,7 @@
 import Notification from "./Notification.vue";
 import Vue from "vue";
 import { mapState } from "vuex";
-import { ActionTypes, NotificationState } from "../store/notification/types";
+import { ActionTypes, UIState } from "../store/types";
 
 export default Vue.extend({
   name: "NotificationList",
@@ -18,8 +18,8 @@ export default Vue.extend({
     Notification,
   },
   computed: {
-    ...mapState("ui/notification", {
-      notifications: (state) => (state as NotificationState).notifications,
+    ...mapState("ui", {
+      notifications: (state) => (state as UIState).notifications,
     }),
   },
 });

@@ -21,6 +21,7 @@ module.exports = {
           errorColor: "#CE8185",
           errorText: "#A94748",
         },
+        home: "#13287e",
       },
     },
     fill: (theme) => ({

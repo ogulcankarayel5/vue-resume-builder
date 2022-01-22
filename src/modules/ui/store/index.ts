@@ -1,16 +1,15 @@
-import { RootState } from "@/store";
+
+
+import { actions } from "@/modules/ui/store/actions";
+import { state } from "@/modules/ui/store/state";
+import { mutations } from "@/modules/ui/store/mutations";
 import { Module } from "vuex";
-import { notification } from "./notification";
-import { NotificationState } from "./notification/types";
+import { RootState } from "@/store";
+import { UIState } from "./types";
 
-export interface UIState {
-  notification: NotificationState;
-}
-
-const modules = {
-  notification,
-};
 export const ui: Module<UIState, RootState> = {
   namespaced: true,
-  modules,
+  actions,
+  state,
+  mutations,
 };
