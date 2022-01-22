@@ -45,7 +45,7 @@ import { mapActions } from "vuex";
 import {
   ActionTypes,
   INotification,
-} from "@/modules/ui/store/notification/types";
+} from "@/modules/ui/store/types";
 import VIcon from "@/common/components/VIcon.vue";
 import IconButton from "@/common/components/IconButton.vue";
 
@@ -98,7 +98,7 @@ export default Vue.extend({
     },
   },
   methods: {
-    ...mapActions("ui/notification", [ActionTypes.REMOVE_NOTIFICATION]),
+    ...mapActions("ui", [ActionTypes.REMOVE_NOTIFICATION]),
     onClose() {
       this.removeNotication(this.notification.id);
     },

@@ -2,7 +2,7 @@ import firebase from "firebase";
 import { MutationTypes } from "./types";
 import { ActionTree } from "vuex";
 import { ActionTypes, AuthState } from "@/modules/auth/store/types";
-import { ActionTypes as NotificationActionTypes } from "@/modules/ui/store/notification/types";
+import { ActionTypes as NotificationActionTypes } from "@/modules/ui/store/types";
 import { AuthService } from "@/modules/auth/services";
 import { RootState } from "@/store";
 import router from "@/router";
@@ -52,14 +52,14 @@ export const actions: ActionTree<AuthState, RootState> = {
     try {
       await AuthService.loginWithEmailAndPassword(email, password);
       dispatch(
-        `ui/notification/${NotificationActionTypes.PUSH_NOTIFICATION}`,
+        `ui/${NotificationActionTypes.PUSH_NOTIFICATION}`,
         { type: "success", message: "Giriş Başarılı, yönlendiriliyorsunuz" },
         { root: true }
       );
       router.replace("home");
     } catch (err: any) {
       dispatch(
-        `ui/notification/${NotificationActionTypes.PUSH_NOTIFICATION}`,
+        `ui/${NotificationActionTypes.PUSH_NOTIFICATION}`,
         { type: "error", message: err.message },
         { root: true }
       );
