@@ -1,9 +1,9 @@
 <template>
-  <div class="h-screen max-w-screen-sm lg:max-w-screen-lg mx-auto">
+  <div class="min-h-screen ">
     <language-switcher />
     <notification-list />
     <the-navigation />
-      <router-view class="root" :class="isNavOpen ? 'open' : ''" />
+    <router-view class="root" :class="isNavOpen ? 'open' : ''" />
   </div>
 </template>
 

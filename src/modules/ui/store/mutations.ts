@@ -5,7 +5,7 @@ import { UIState } from "./types";
 
 export type Mutations<S = UIState> = {
   [MutationTypes.PUSH_NOTIFICATION](state: S, payload: any): void;
-  [MutationTypes.TOGGLE_NAV](state: S): void;
+  [MutationTypes.TOGGLE_NAV](state: S, payload: boolean): void;
 };
 
 export const mutations: MutationTree<UIState> & Mutations = {
@@ -21,7 +21,7 @@ export const mutations: MutationTree<UIState> & Mutations = {
       return notification.id !== payload;
     });
   },
-  [MutationTypes.TOGGLE_NAV](state) {
-    state.isNavOpen = !state.isNavOpen;
+  [MutationTypes.TOGGLE_NAV](state, payload) {
+    state.isNavOpen = payload;
   },
 };

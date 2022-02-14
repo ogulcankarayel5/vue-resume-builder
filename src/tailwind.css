@@ -4,18 +4,17 @@
 
 
 @layer base {
-    *,
-    *::before,
-    *::after {
-      box-sizing: inherit;
-   }
+   
 
+   body {
+     @apply
+     min-h-screen
+   }
     html {
      @apply 
      font-sans
-     box-border
-     antialiased;
-    
+     antialiased
+     h-full
     }
 
     svg {
