@@ -20,7 +20,7 @@ export interface Actions {
     payload: INotification
   ): void;
 
-  [ActionTypes.TOGGLE_NAV]({ commit }: ActionContext<UIState, RootState>): void;
+  [ActionTypes.TOGGLE_NAV]({ commit }: ActionContext<UIState, RootState>, payload: boolean): void;
 }
 
 export const actions: ActionTree<UIState, RootState> & Actions = {
@@ -30,7 +30,7 @@ export const actions: ActionTree<UIState, RootState> & Actions = {
   [ActionTypes.REMOVE_NOTIFICATION]({ commit }, payload) {
     commit(MutationTypes.REMOVE_NOTIFICATION, payload);
   },
-  [ActionTypes.TOGGLE_NAV]({ commit }) {
-    commit(MutationTypes.TOGGLE_NAV);
+  [ActionTypes.TOGGLE_NAV]({ commit }, payload) {
+    commit(MutationTypes.TOGGLE_NAV, payload);
   },
 };

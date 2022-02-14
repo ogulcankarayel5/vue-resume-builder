@@ -1,22 +1,10 @@
 <template>
   <nav class="pt-5">
-    <div @click="toggleNav" class="flex md:hidden ml-3">
-      <button
-        type="button"
-        class="
-          text-gray-800
-          hover:text-gray-400
-          focus:outline-none focus:text-gray-400
-        "
-        aria-label="toggle menu"
-      >
-        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-          <path
-            fill-rule="evenodd"
-            d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-          ></path>
-        </svg>
-      </button>
+    <div
+      @click="toggleNav(true)"
+      class="flex text-gray-800 md:hidden ml-3 cursor-pointer"
+    >
+      <v-icon name="nav" />
     </div>
     <div
       :class="
@@ -26,20 +14,29 @@
       "
       class="flex-col md:flex-row md:flex"
     >
-      <div
-        v-if="!isNavOpen"
-        class="text-2xl font-medium text-gray-800 md:hidden"
-      >
-        CV BUILDER
-      </div>
-      <router-link to="/home" class="md:ml-auto link">Home </router-link>
-      <router-link to="/home" class="link">About </router-link>
-      <router-link to="/home" class="link">Pricing </router-link>
+      <router-link
+        to="/home"
+        class="md:ml-auto link"
+        :class="{ 'text-white mt-8': isNavOpen }"
+        >Home
+      </router-link>
+      <router-link
+        to="/home"
+        class="link"
+        :class="{ 'text-white mt-8': isNavOpen }"
+        >About
+      </router-link>
+      <router-link
+        to="/home"
+        class="link"
+        :class="{ 'text-white mt-8': isNavOpen }"
+        >Pricing
+      </router-link>
       <icon-button
         v-if="isNavOpen"
         name="close"
         class="absolute top-2 right-1 text-white"
-        @onClick="toggleNav"
+        @onClick="toggleNav(false)"
       />
     </div>
   </nav>
@@ -50,17 +47,37 @@ import { ActionTypes, UIState } from "@/modules/ui/store/types";
 import Vue from "vue";
 import { mapActions, mapState } from "vuex";
 import IconButton from "./IconButton.vue";
+import VIcon from "./VIcon.vue";
 
 export default Vue.extend({
-  components: {  IconButton },
+  components: { IconButton, VIcon },
   name: "TheNavigation",
+  data() {
+    return {
+      mobileView: false,
+    };
+  },
   methods: {
     ...mapActions("ui", [ActionTypes.TOGGLE_NAV]),
+    handleView() {
+      this.mobileView = window.innerWidth <= 768;
+    },
   },
   computed: {
     ...mapState("ui", {
       isNavOpen: (state) => (state as UIState).isNavOpen,
     }),
+  },
+  watch: {
+    mobileView(value) {
+      value ? null : this.toggleNav(false);
+    },
+  },
+  created() {
+    window.addEventListener("resize", this.handleView);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleView);
   },
 });
 </script>
@@ -68,11 +85,6 @@ export default Vue.extend({
 .link {
   @apply text-lg 
   font-semibold 
-text-white
-  ml-12
-  mt-8;
-}
-
-.mobile {
+  ml-12;
 }
 </style>

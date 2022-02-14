@@ -12,6 +12,7 @@ const icons: any = {
   tick: require("@/common/icons/Tick.vue").default,
   close: require("@/common/icons/Close.vue").default,
   google: require("@/common/icons/Google.vue").default,
+  nav: require("@/common/icons/Nav.vue").default,
 };
 
 export default Vue.extend({
