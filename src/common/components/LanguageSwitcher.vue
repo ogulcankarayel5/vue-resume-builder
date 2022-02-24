@@ -1,17 +1,26 @@
 <template>
   <div class="fixed right-3 top-2">
-    <select v-model="$i18n.locale" class="bg-gray-300"  data-test-id="localeSelect">
-      <option data-test-id="locale" :value="locale.code" v-for="locale in locales" :key="locale.code">
+    <select
+      v-model="$i18n.locale"
+      class="bg-gray-300"
+      data-test-id="localeSelect"
+    >
+      <option
+        data-test-id="locale"
+        :value="locale.code"
+        v-for="locale in locales"
+        :key="locale.code"
+      >
         {{ locale.name }}
       </option>
     </select>
   </div>
 </template>
 <script>
-import Vue from "vue";
+import { defineComponent } from "vue";
 import { getSupportedLocales } from "@/plugins/i18n/utils";
 
-export default Vue.extend({
+export default defineComponent({
   name: "LanguageSwitcher",
   data: () => ({ locales: getSupportedLocales() }),
 });

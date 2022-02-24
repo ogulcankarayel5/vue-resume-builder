@@ -9,7 +9,6 @@
         class="flex-1 p-3 shadow-2xl rounded-lg focus:outline-none"
         :class="className"
         v-bind="$attrs"
-        v-on="$listeners"
         :value="value"
         @input="update"
         :type="showPassword ? 'text' : type"
@@ -17,27 +16,20 @@
       />
       <div
         v-if="showHideIcon"
-        class="
-          absolute
-          top-2/4
-          transform
-          -translate-y-2/4
-          right-2
-          cursor-pointer
-        "
+        class="absolute top-2/4 transform -translate-y-2/4 right-2 cursor-pointer"
         @click="togglePassword"
         data-test-id="password"
       >
         <v-icon data-test-id="reveal" v-if="showPassword" name="reveal" />
-        <v-icon data-test-id="revealHide"  v-else name="revealHide" />
+        <v-icon data-test-id="revealHide" v-else name="revealHide" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-export default Vue.extend({
+import { defineComponent } from "vue";
+export default defineComponent({
   inheritAttrs: false,
   name: "VInput",
   data() {

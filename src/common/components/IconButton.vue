@@ -1,16 +1,15 @@
 <template>
   <div @click="onClick" class="cursor-pointer flex items-center justify-center">
     <v-icon v-bind="$props" />
-    <slot/>
-
+    <slot />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "vue";
 import VIcon from "./VIcon.vue";
 
-export default Vue.extend({
+export default defineComponent({
   components: { VIcon },
   name: "IconButton",
   props: {

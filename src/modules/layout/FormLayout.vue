@@ -21,10 +21,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "vue";
 import { windowSizeMixin } from "@/common";
 
-export default Vue.extend({
+export default defineComponent({
   name: "FormLayout",
   data() {
     return {

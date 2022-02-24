@@ -15,12 +15,12 @@ export enum ActionTypes {
   PUSH_NOTIFICATION = "pushNotification",
   REMOVE_NOTIFICATION = "removeNotication",
 
-  TOGGLE_NAV="toggleNav"
+  TOGGLE_NAV = "toggleNav",
 }
 
 export enum MutationTypes {
   PUSH_NOTIFICATION = "PUSH_NOTIFICATION",
   REMOVE_NOTIFICATION = "REMOVE_NOTIFICATION",
 
-  TOGGLE_NAV="TOGGLE_NAV"
+  TOGGLE_NAV = "TOGGLE_NAV",
 }

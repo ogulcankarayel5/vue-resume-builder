@@ -156,6 +156,6 @@
 
 <script>
 export default {
-  name: "Resume",
+  name: "ResumeIcon",
 };
 </script>

@@ -1,10 +1,10 @@
-import { RouteConfig } from "vue-router";
+import { RouteRecordRaw } from "vue-router";
 
-export const AuthRoutes: Array<RouteConfig> = [
+export const AuthRoutes: Array<RouteRecordRaw> = [
   {
     path: "/login",
     name: "login",
-    component: () => import("@/modules/auth/pages/Login.vue"),
+    component: () => import("@/modules/auth/pages/LoginPage.vue"),
     meta: {
       restrict: true,
     },
@@ -12,7 +12,7 @@ export const AuthRoutes: Array<RouteConfig> = [
   {
     path: "/register",
     name: "register",
-    component: () => import("@/modules/auth/pages/Register.vue"),
+    component: () => import("@/modules/auth/pages/RegisterPage.vue"),
     meta: {
       restrict: true,
     },

@@ -3,19 +3,19 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue, { defineComponent } from "vue";
 
 const icons: any = {
-  reveal: require("@/common/icons/Reveal.vue").default,
-  revealHide: require("@/common/icons/RevealHide.vue").default,
-  resume: require("@/common/icons/Resume.vue").default,
-  tick: require("@/common/icons/Tick.vue").default,
-  close: require("@/common/icons/Close.vue").default,
-  google: require("@/common/icons/Google.vue").default,
-  nav: require("@/common/icons/Nav.vue").default,
+  reveal: require("@/common/icons/RevealIcon.vue").default,
+  revealHide: require("@/common/icons/RevealHideIcon.vue").default,
+  resume: require("@/common/icons/ResumeIcon.vue").default,
+  tick: require("@/common/icons/TickIcon.vue").default,
+  close: require("@/common/icons/CloseIcon.vue").default,
+  google: require("@/common/icons/GoogleIcon.vue").default,
+  nav: require("@/common/icons/NavIcon.vue").default,
 };
 
-export default Vue.extend({
+export default defineComponent({
   name: "VIcon",
   props: {
     name: {

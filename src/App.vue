@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen ">
+  <div class="min-h-screen">
     <language-switcher />
     <notification-list />
     <the-navigation />
@@ -8,15 +8,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "vue";
 import { LanguageSwitcher } from "@/common/components";
 import NotificationList from "./modules/ui/components/NotificationList.vue";
 import TheNavigation from "@/common/components/TheNavigation.vue";
 import { mapState } from "vuex";
 import { UIState } from "./modules/ui/store/types";
 
-export default Vue.extend({
-  name: "Login",
+export default defineComponent({
+  name: "App",
 
   data() {
     return {

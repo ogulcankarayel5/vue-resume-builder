@@ -1,12 +1,8 @@
-import Vue from "vue";
-import { createLogger } from "vuex";
-import Vuex from "vuex";
+import { createLogger, createStore } from "vuex";
 import { auth } from "@/modules/auth/store";
 import { UIState } from "@/modules/ui/store/types";
 import { ui } from "@/modules/ui/store";
 import { AuthState } from "@/modules/auth/store/types";
-
-Vue.use(Vuex);
 
 export interface RootState {
   auth: AuthState;
@@ -18,7 +14,7 @@ const modules = {
   ui,
 };
 
-export default new Vuex.Store<RootState>({
+export default createStore<RootState>({
   plugins: process.env.NODE_ENV === "production" ? [] : [createLogger()],
   modules,
 });

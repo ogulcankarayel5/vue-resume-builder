@@ -25,10 +25,6 @@
 
 <script>
 export default {
-  name: "RevealHide",
+  name: "RevealHideIcon",
 };
 </script>
-
-
-
-

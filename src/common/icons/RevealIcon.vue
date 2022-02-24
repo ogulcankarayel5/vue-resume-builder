@@ -25,6 +25,6 @@
 
 <script>
 export default {
-  name: "Reveal",
+  name: "RevealIcon",
 };
 </script>

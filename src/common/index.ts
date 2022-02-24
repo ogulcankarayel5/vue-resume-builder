@@ -1,2 +1,2 @@
 export * from "@/common/components";
-export * from "@/common/mixins" 
+export * from "@/common/mixins";
