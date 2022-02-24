@@ -1,34 +1,13 @@
 <template>
   <transition name="fade" mode="in-out">
     <div
-      class="
-        fixed
-        left-2/4
-        transform
-        -translate-x-2/4
-        top-8
-        z-10
-        shadow-sm
-        flex
-        items-center
-        border-2 border-solid
-        rounded
-        w-96
-        h-11
-        px-1
-      "
+      class="fixed left-2/4 transform -translate-x-2/4 top-8 z-10 shadow-sm flex items-center border-2 border-solid rounded w-96 h-11 px-1"
       :class="[containerType]"
     >
       <div class="flex min-w-0 flex-1 items-center">
         <v-icon :name="iconName" />
         <p
-          class="
-            ml-2
-            flex-1
-            font-bold
-            whitespace-nowrap
-            overflow-hidden overflow-ellipsis
-          "
+          class="ml-2 flex-1 font-bold whitespace-nowrap overflow-hidden overflow-ellipsis"
           :class="[color]"
         >
           {{ notification.message }}
@@ -40,12 +19,9 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "vue";
 import { mapActions } from "vuex";
-import {
-  ActionTypes,
-  INotification,
-} from "@/modules/ui/store/types";
+import { ActionTypes, INotification } from "@/modules/ui/store/types";
 import VIcon from "@/common/components/VIcon.vue";
 import IconButton from "@/common/components/IconButton.vue";
 
@@ -53,9 +29,9 @@ import IconButton from "@/common/components/IconButton.vue";
 //   success: 'text-toast-successText',
 //   error: ''
 // }
-export default Vue.extend({
+export default defineComponent({
   components: { VIcon, IconButton },
-  name: "Notification",
+  name: "NotificationItem",
   props: {
     notification: {
       type: Object as () => INotification,
@@ -68,7 +44,7 @@ export default Vue.extend({
   },
   computed: {
     containerType() {
-      switch (this.notification.type) {
+      switch (this.notification?.type) {
         case "error":
           return "border-toast-errorColor bg-toast-errorBackground";
         case "success":
@@ -79,7 +55,7 @@ export default Vue.extend({
       return "";
     },
     color() {
-      switch (this.notification.type) {
+      switch (this.notification?.type) {
         case "error":
           return "text-toast-errorText";
         case "success":
@@ -90,7 +66,7 @@ export default Vue.extend({
       return "";
     },
     iconName() {
-      switch (this.notification.type) {
+      switch (this.notification?.type) {
         case "success":
           return "tick";
       }
@@ -100,15 +76,15 @@ export default Vue.extend({
   methods: {
     ...mapActions("ui", [ActionTypes.REMOVE_NOTIFICATION]),
     onClose() {
-      this.removeNotication(this.notification.id);
+      this.removeNotication(this.notification?.id);
     },
   },
   created() {
     this.timeout = setTimeout(() => {
-      this.removeNotication(this.notification.id);
+      this.removeNotication(this.notification?.id);
     }, 3000);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearTimeout(this.timeout);
   },
 });

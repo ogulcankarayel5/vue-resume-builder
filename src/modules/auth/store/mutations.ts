@@ -1,13 +1,11 @@
 import { MutationTree } from "vuex";
 import { MutationTypes, AuthState } from "@/modules/auth/store/types";
 
-
 export type Mutations<S = AuthState> = {
   [MutationTypes.AUTH_START]: (state: S) => void;
   [MutationTypes.AUTH_SUCCESS]: (state: S, payload: any) => void;
 
   [MutationTypes.AUTH_LOGOUT]: (state: S) => void;
-
 };
 
 export const mutations: MutationTree<AuthState> & Mutations = {

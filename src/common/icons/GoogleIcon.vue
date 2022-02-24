@@ -26,6 +26,6 @@
 
 <script>
 export default {
-  name: "Google",
+  name: "GoogleIcon",
 };
 </script>

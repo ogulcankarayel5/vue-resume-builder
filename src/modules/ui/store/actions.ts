@@ -20,7 +20,10 @@ export interface Actions {
     payload: INotification
   ): void;
 
-  [ActionTypes.TOGGLE_NAV]({ commit }: ActionContext<UIState, RootState>, payload: boolean): void;
+  [ActionTypes.TOGGLE_NAV](
+    { commit }: ActionContext<UIState, RootState>,
+    payload: boolean
+  ): void;
 }
 
 export const actions: ActionTree<UIState, RootState> & Actions = {

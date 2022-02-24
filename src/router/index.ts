@@ -1,23 +1,18 @@
-import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import { AuthRoutes } from "@/modules/auth/routes";
 import { HomeRoutes } from "@/modules/home/routes";
 import store from "@/store";
 
-Vue.use(VueRouter);
-
-const routes: Array<RouteConfig> = [
+const routes: Array<RouteRecordRaw> = [
   ...AuthRoutes,
   ...HomeRoutes,
-  { path: "*", redirect: { name: "home" } },
+  { path: "/:catchAll(.*)", redirect: { name: "home" } },
 ];
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
 router.beforeEach((to, from, next) => {
   console.log(store.getters["auth/isLoggedIn"]);
   if (

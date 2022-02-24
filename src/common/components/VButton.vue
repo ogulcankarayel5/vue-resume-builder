@@ -2,26 +2,25 @@
   <button
     data-test-id="button"
     class="py-4 flex justify-center items-center"
-    :class="[getVariant, disabled, getSize, getElevation,getRounded]"
+    :class="[getVariant, disabled, getSize, getElevation, getRounded]"
     @click="onClick"
   >
     <pulse-loader data-test-id="loading" v-if="loading" color="#ffffff" />
-    <slot v-else data-test-id="slot"/>
+    <slot v-else data-test-id="slot" />
   </button>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+import { defineComponent } from "vue";
 type Variants = "primary";
 type Size = "block" | "medium";
 
-export default Vue.extend({
+export default defineComponent({
   name: "VButton",
   props: {
     variant: {
       type: String as () => Variants,
-      required:false
+      required: false,
     },
     size: {
       type: String as () => Size,
@@ -37,19 +36,16 @@ export default Vue.extend({
     },
     rounded: {
       type: Boolean,
-      default: false
-    }
-  },
-  components: {
-    PulseLoader,
+      default: false,
+    },
   },
   computed: {
     getSize(): any {
       switch (this.size) {
         case "block":
-          return "w-full"
+          return "w-full";
         case "medium":
-          return "w-36"
+          return "w-36";
         default:
           break;
       }
@@ -78,9 +74,9 @@ export default Vue.extend({
     },
     getRounded() {
       return {
-        "rounded-lg": this.rounded
-      }
-    }
+        "rounded-lg": this.rounded,
+      };
+    },
   },
   methods: {
     onClick(event: Event) {

@@ -44,12 +44,12 @@
 
 <script lang="ts">
 import { ActionTypes, UIState } from "@/modules/ui/store/types";
-import Vue from "vue";
+import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import IconButton from "./IconButton.vue";
 import VIcon from "./VIcon.vue";
 
-export default Vue.extend({
+export default defineComponent({
   components: { IconButton, VIcon },
   name: "TheNavigation",
   data() {
@@ -76,7 +76,7 @@ export default Vue.extend({
   created() {
     window.addEventListener("resize", this.handleView);
   },
-  destroyed() {
+  unmounted() {
     window.removeEventListener("resize", this.handleView);
   },
 });

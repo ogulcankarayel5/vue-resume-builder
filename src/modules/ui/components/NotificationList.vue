@@ -1,21 +1,21 @@
 <template>
   <div>
     <div v-for="notification in notifications" :key="notification.id">
-      <notification :notification="notification" />
+      <notification-item :notification="notification" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Notification from "./Notification.vue";
-import Vue from "vue";
+import NotificationItem from "./NotificationItem.vue";
+import { defineComponent } from "vue";
 import { mapState } from "vuex";
-import { ActionTypes, UIState } from "../store/types";
+import { UIState } from "../store/types";
 
-export default Vue.extend({
+export default defineComponent({
   name: "NotificationList",
   components: {
-    Notification,
+    NotificationItem,
   },
   computed: {
     ...mapState("ui", {

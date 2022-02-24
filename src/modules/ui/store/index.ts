@@ -1,5 +1,3 @@
-
-
 import { actions } from "@/modules/ui/store/actions";
 import { state } from "@/modules/ui/store/state";
 import { mutations } from "@/modules/ui/store/mutations";

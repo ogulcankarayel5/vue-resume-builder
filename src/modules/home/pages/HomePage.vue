@@ -79,21 +79,23 @@
       </div>
       <img
         src="https://geeko.netlify.app/img/core-img/cv.png"
-        class="mx-auto mt-6 "
+        class="mx-auto mt-6"
       />
     </section>
     <section>
-      <h1 class="text-5xl text-home font-semibold leading-normal">Our Pricing</h1>
+      <h1 class="text-5xl text-home font-semibold leading-normal">
+        Our Pricing
+      </h1>
     </section>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "vue";
 import { VButton } from "@/common";
 import ListItem from "@/modules/home/components/ListItem.vue";
-export default Vue.extend({
-  name: "Home",
+export default defineComponent({
+  name: "HomePage",
   components: {
     VButton,
     ListItem,

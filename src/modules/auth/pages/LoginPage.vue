@@ -1,6 +1,6 @@
 <template>
   <form-layout>
-    <h1 class="text-3xl font-semibold">{{ $t("register.subTitle") }}</h1>
+    <h1 class="text-3xl font-semibold">{{ $t("login.subTitle") }}</h1>
     <div class="mt-16">
       <v-input
         v-model="email"
@@ -8,6 +8,7 @@
         type="email"
         placeholder="Email"
         enterkeyhint="next"
+        id="email"
         @blur="$v.email.$touch()"
       />
       <template v-if="$v.email.$error">
@@ -48,12 +49,19 @@
         :loading="loading"
         @onClick="onClick"
       >
-        {{ $t("register.buttonText") }}
+        {{ $t("login.buttonText") }}
+      </v-button>
+      <div class="text-center mt-6 border-t-2 border-gray-400 border-solid">
+        <span class="relative -top-3 bg-white px-2">OR</span>
+      </div>
+      <v-button class="mt-6" elevation size="block" @onClick="loginWithGoogle">
+        <v-icon name="google" />
+        <span class="ml-2">Sign with Google </span>
       </v-button>
       <p class="text-gray-600 mt-5">
-        {{ $t("register.footerText") }}
-        <router-link class="text-primary font-bold" to="/login">{{
-          $t("register.footerText2")
+        {{ $t("login.footerText") }}
+        <router-link class="text-primary font-bold" to="/register">{{
+          $t("login.footerText2")
         }}</router-link>
       </p>
     </div>
@@ -61,37 +69,52 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { VInput, VButton, VError } from "@/common";
+import { defineComponent } from "vue";
+import { VInput, VButton, VError, windowSizeMixin } from "@/common";
 import { required, email, minLength } from "vuelidate/lib/validators";
-import { mapActions } from "vuex";
-import { ActionTypes } from "../store/types";
+import { mapActions, mapState } from "vuex";
+import { ActionTypes, AuthState } from "../store/types";
+import VIcon from "@/common/components/VIcon.vue";
 import FormLayout from "@/modules/layout/FormLayout.vue";
 
-export default Vue.extend({
-  name: "Register",
-  components: {
-    VInput,
-    VButton,
-    VError,
-    FormLayout,
-  },
+export default defineComponent({
+  name: "LoginPage",
   data() {
     return {
       email: "",
       password: "",
     };
   },
+  mixins: [windowSizeMixin],
+  components: {
+    VInput,
+    VButton,
+    VIcon,
+    VError,
+    FormLayout,
+  },
   methods: {
-    ...mapActions("auth", [ActionTypes.REGISTER]),
+    ...mapActions("auth", [
+      ActionTypes.LOGIN,
+      ActionTypes.LOGOUT,
+      ActionTypes.LOGIN_WITH_GOOGLE,
+    ]),
     async onClick() {
-      this.$v.$touch();
-      if (this.$v.$invalid) {
+      (this.$v as any).$touch();
+      if ((this.$v as any).$invalid) {
         return;
       }
 
-      this.register({ email: this.email, password: this.password });
+      this.login({ email: this.email, password: this.password });
     },
+    logoutClick() {
+      this.logout();
+    },
+  },
+  computed: {
+    ...mapState("auth", {
+      loading: (state) => (state as AuthState).loading,
+    }),
   },
   validations: {
     email: {

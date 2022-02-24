@@ -1,9 +1,9 @@
-import { RouteConfig } from "vue-router";
+import { RouteRecordRaw } from "vue-router";
 
-export const HomeRoutes: Array<RouteConfig> = [
+export const HomeRoutes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: () => import("@/modules/home/pages/Home.vue"),
-  }
+    component: () => import("@/modules/home/pages/HomePage.vue"),
+  },
 ];

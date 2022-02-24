@@ -1,5 +1,4 @@
-import Vue from "vue";
-
+import Vue, { createApp } from "vue";
 import firebase from "@/plugins/firebase";
 import Vuelidate from "vuelidate";
 import App from "@/App.vue";
@@ -13,8 +12,6 @@ import { ActionTypes } from "./modules/auth/store/types";
 
 Vue.use(Vuelidate);
 
-Vue.config.productionTip = false;
-
 Vue.component("VIcon", require("@/common/components/VIcon").default);
 
 let app: any;
@@ -24,11 +21,10 @@ firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
       await store.dispatch(`auth/${ActionTypes.INIT}`, user);
     }
-    app = new Vue({
-      router,
-      store,
-      i18n,
-      render: (h) => h(App),
-    }).$mount("#app");
+    app = createApp(App);
+    app.use(router);
+    app.use(store);
+    app.use(i18n);
+    app.mount("#app");
   }
 });
